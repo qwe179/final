@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="web.dao.face.RegisterProductDao">
+
+
+<insert id="insertProduct" parameterType="web.dto.Product">
+
+<selectKey order="BEFORE" resultType="int" keyProperty="reg_no">
+ 		SELECT Product_SEQ.nextval FROM dual
+ 	</selectKey>
+
+		INSERT INTO PRODUCT (reg_no,TRADE_CLASS,CATEGORY,PRICE,TITLE,CONTENT,QUANTITY,USER_EMAIL,LOCATION,REG_DATE) 
+		VALUES(#{reg_no},#{trade_class},#{category},#{price},#{title}, #{content},#{quantity},#{user_email},#{location},#{reg_date})
+		
+	
+	</insert>
+
+</mapper>

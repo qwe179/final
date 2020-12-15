@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.devmg.dao.UserDao">
+  <select id="selectAllUser" resultType="com.devmg.dto.Chat">
+  select * from user_tb
+  </select>
+  
+  
+  
+  <select id="selectAllMessage" parameterType="com.devmg.dto.Chat" resultType="com.devmg.dto.Chat">
+  select * from chat_tb where sender=#{reciever} and reciever=#{sender}
+or sender=#{sender} and reciever=#{reciever}
+order by send_time
+  </select>
+  
+  
+<!--   <insert id="insertMessage"  parameterType="com.devmg.dto.Chat"> -->
+<!--   insert into chat_tb (sender,reciever,message,send_time)  -->
+<!-- values (#{sender},#{reciever},#{message},#{send_time}) -->
+  
+  
+<!--   </insert> -->
+  </mapper>
+  

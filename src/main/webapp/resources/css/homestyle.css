@@ -21,7 +21,8 @@ body {
 
 #fixed-bar h2 {
 	text-align: center;
-	margin: 50px 0;
+	margin: 20px 0; 
+	/* margin-top : -20px; */
 }
 
 
@@ -67,18 +68,10 @@ body {
 }
 
 .home-main-section {
-	background: #FBF7F2;
-	height: 760px;
-	margin-top: 20px;
+    background: #FBF7F2;
+    height: 720px;
+    margin-top: 20px;
 }
-
-
-
-.home-main-image{
-	padding-left: 700px;
-	padding-top : 0;
-}
-
 
 .home-hot-content{
 	margin-left: 200px;
@@ -178,4 +171,6 @@ article {
 	color: #868e96;
     font-size: 13px;
 }
+
+
 

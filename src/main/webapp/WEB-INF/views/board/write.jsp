@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 	<div class="form-group">
 		<label for="writer">작성자</label>
-		<input type="text" id="writer" value="${nick }" readonly="readonly"
+		<input type="text" id="writer" value="${login.nick }" readonly="readonly"
 			class="form-control" />
 	</div>
 

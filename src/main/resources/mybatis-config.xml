@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!-- 마이바티스 3 Configuration DOCTYPE -->
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -6,12 +7,26 @@
 
 <configuration>
 
-   <settings>
-      <setting name="jdbcTypeForNull" value="NULL"/>
-   </settings>
-   
-   <typeAliases>
-      <package name="web.dto"/>
-   </typeAliases>
-   
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<typeAliases>
+		<package name="web.dto"/>
+	</typeAliases>
+
 </configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

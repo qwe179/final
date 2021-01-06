@@ -22,7 +22,7 @@
 			<li><a href="/board/list?curPage=${paging.curPage-1 }" aria-label="Previous"> <span>&laquo;</span></a></li>
 		</c:if>
 		<c:if test="${paging.curPage eq 1 }">
-			<li class="disabled"><span>&laquo;</span></li>
+			<li class=""><span>&laquo;</span></li>
 		</c:if>
 
 
@@ -35,7 +35,7 @@
 			varStatus="stat">
 			
 			<c:if test="${paging.curPage eq page }">
-				<li class="active"><a href="/board/list?curPage=${page }">${page }</a></li>
+				<li class=""><a href="/board/list?curPage=${page }">${page }</a></li>
 			</c:if>
 			
 			<c:if test="${paging.curPage ne page }">
@@ -54,7 +54,7 @@
 			<li><a href="/board/list?curPage=${paging.curPage+1 }" aria-label="Next"> <span>&raquo;</span></a></li>
 		</c:if>
 		<c:if test="${paging.curPage eq paging.totalPage }">
-			<li class="disabled"><span>&raquo;</span></li>
+			<li class=""><span>&raquo;</span></li>
 		</c:if>
 		
 		

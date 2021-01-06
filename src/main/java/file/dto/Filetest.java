@@ -2,7 +2,6 @@ package file.dto;
 
 public class Filetest {
 	
-	private int commentNo;
 	private int file_no;
 	private int reg_no;
 	private String originName;
@@ -10,15 +9,10 @@ public class Filetest {
 	private String filePath;
 	private String fileKind;
 	
-	public int getCommentNo() {
-		return commentNo;
-	}
-	public void setCommentNo(int commentNo) {
-		this.commentNo = commentNo;
-	}
+
 	@Override
 	public String toString() {
-		return "Filetest [commentNo=" + commentNo + ", file_no=" + file_no + ", reg_no=" + reg_no + ", originName="
+		return "Filetest [file_no=" + file_no + ", reg_no=" + reg_no + ", originName="
 				+ originName + ", storedName=" + storedName + ", filePath=" + filePath + ", fileKind=" + fileKind + "]";
 	}
 	public String getFileKind() {

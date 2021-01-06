@@ -4,23 +4,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="/WEB-INF/views/layout/header.jsp" />
-    
+<style>
+.container{
+	text-align: center;
+}
+</style>
 <div class="container">
 
 <h1>메인화면</h1>
 <hr>
 <div>
+
 <c:choose>
 	<c:when test="${empty login }">
-		<a href="/member/join">회원가입</a> |
 		<a href="/member/login">로그인</a>
 	</c:when>
-	<c:when test="${login eq true}">
-		<a href="/member/logout">로그아웃</a>
+	<c:when test="${! empty login}">
+		<b>${login.nick }</b>님, 반갑습니다.
 	</c:when>
 </c:choose>
+
+
 <hr>
-	<a href="/board/list">목록</a>
+	<a href="/">목록</a>
 </div>
 
 </div><!-- .container -->

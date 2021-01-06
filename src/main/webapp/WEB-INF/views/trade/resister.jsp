@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -22,6 +23,14 @@
 #mytype {
 	width:100px;
 
+}
+
+.btn {
+	background-color: #FFD700;
+	width : 100px;
+	border-radius: 4px;	
+	
+	
 }
 
 .glyphicon-chevron-left:before {
@@ -163,7 +172,7 @@ $(document).ready(function() {
 			alert("내용을 입력해 주세요");
 			return false;
 		}
-		if($('select[name="trade_class"]').val()=="판매"){
+		if($('select[name="tradeClass"]').val()=="판매"){
 			
 			if($('select[name="category"]').val()=="디지털/가전"){
 				var flag=0;
@@ -202,16 +211,23 @@ $(document).ready(function() {
 	
 	
 		//form submit 수행하기
+		var con_test = confirm("등록하시겠습니까?");
+		if (con_test==true){
+			
 		$("form").submit();
-	
+		}else{
+			return false;
+		}
+		
+		
 		
 		
 	})
 	
 	$("#cancel").click(function() {
 		history.go(-1);
-	})
-})
+	});
+});
 </script>
 
 
@@ -224,47 +240,21 @@ $(document).ready(function() {
 
 <div class="container">
 	<!-- 헤더 -->
-	<c:import url="/WEB-INF/views/header/header.jsp" />
+	<c:import url="/WEB-INF/views/layout/header.jsp" />
 	
-	<div id="page-wrapper">
-	  <!-- 사이드바 -->
-	  <div id="sidebar-wrapper">
-	    <ul class="sidebar-nav">
-	      <li class="sidebar-brand">
-	        <a href="#">중고거래</a>
-	      </li>
-	      <li><a href="#">메뉴 1</a></li>
-	      <li><a href="#">메뉴 2</a></li>
-	      <li><a href="#">메뉴 3</a></li>
-	      <li><a href="#">메뉴 4</a></li>
-	      <li><a href="#">메뉴 5</a></li>
-	      <li><a href="#">메뉴 6</a></li>
-	      <li><a href="#">메뉴 7</a></li>
-	      <li><a href="#">메뉴 8</a></li>
-	      <li><a href="#">메뉴 9</a></li>
-	    </ul>
-	  </div>
-	  <!-- /사이드바 -->
-	
-	</div>
+
 
 	<!-- carousel를 구성할 영역 설정 -->
 	<div  style="width: 600px; height: 400px; margin-left:25%;">
-		<!-- carousel를 사용하기 위해서는 class에 carousel와 slide 설정한다. -->
-		<!-- carousel는 특이하게 id를 설정해야 한다.-->
 		<div id="carousel-example-generic" class="carousel slide">
-			<!-- carousel의 지시자 -->
-			<!-- 지시자라고는 하는데 ol태그의 class에 carousel-indicators를 넣는다. -->
 			<ol class="carousel-indicators">
-				<!-- li는 이미지 개수만큼 추가하고 data-target은 carousel id를 가르킨다. -->
-				<!-- data-slide-to는 순서대로 0부터 올라가고 0은 active를 설정한다. -->
-				<!-- 딱히 이 부분은 옵션별로 설정하게 없다. -->
+
 				<li data-target="#carousel-example-generic" data-slide-to="0"
 					class="active rm"></li>
+
 <!-- 				<li data-target="#carousel-example-generic" data-slide-to="1"></li> -->
 			</ol>
-			<!-- 실제 이미지 아이템 -->
-			<!-- class는 carousel-inner로 설정하고 role은 listbox에서 설정한다. -->
+
 			<div class="carousel-inner" role="listbox">
 				<!-- 이미지의 개수만큼 item을 만든다. 중요한 포인트는 carousel-indicators의 li 태그 개수와 item의 개수는 일치해야 한다. -->
 				
@@ -272,7 +262,7 @@ $(document).ready(function() {
 					<!-- 아미지 설정- -->
 					
 					<img
-						src="https://mblogthumb-phinf.pstatic.net/20160129_100/sjm000412_1454076447242u2en7_PNG/2.png?type=w2"
+						src="/resources/img/no.png"
 						style="width: 600px; height: 400px;">
 <!-- 					<img -->
 <!-- 						src="/resources/img/kitchen_adventurer_lemon.jpg" -->
@@ -312,8 +302,8 @@ $(document).ready(function() {
 		<div class="form-group col-md-12">	
 			<label for="inputState">지역 선택</label> 
 		</div>
-		<div class="form-group col-md-2" style="width: 150px;">	
-	 		<select id="inputState" class="form-control" style="width: 150px; display:inline-block;" name="si" onChange="cat1_change(this.value,gu)" >
+		<div class="form-group col-md-2" style="width: 210px;display:inline-block;" >	
+	 		<select id="inputState" class="form-control" style="width: 170px;" name="si" onChange="cat1_change(this.value,gu)" >
 				<option selected>-선택-</option>
 				<option value='서울'>서울</option>
 				<option value='부산'>부산</option>
@@ -333,8 +323,8 @@ $(document).ready(function() {
 				<option value='충북'>충북</option>
 			</select>
   		</div>
-  		<div class="form-group col-md-8">
-  			<select name="gu" class="form-control"  style="width: 150px; display:inline-block;">
+  		<div class="form-group col-md-4" style="display:inline-block; width:210px;">
+  			<select name="gu" class="form-control" onChange="cat2_change(this.value,dong)" style=" width: 170px;">
   				<option selected>-선택-</option>
 <!-- 				<option value='215'>군산시</option> -->
 <!-- 				<option value='216'>김제시</option> -->
@@ -353,9 +343,17 @@ $(document).ready(function() {
 <!-- 				<option value='229'>진안군</option> -->
  			</select>
   		</div>
+ 		<div class="form-group col-md-4" style="display:inline-block;">
+  			<select name="dong" class="form-control"  style="width: 170px; ">
+  				<option selected>-선택-</option>
+ 			</select>
+  		</div>
+  		
+  				
+  				
 		<div class="form-group col-md-6">
 			<label for="inputState">게시글 유형을 선택하세요</label> 
-			<select id="inputState" name="trade_class"
+			<select id="inputState" name="tradeClass"
 				class="form-control" style="width: 350px">
 				<option selected  value="구매">구매 합니다</option>
 				<option value="판매">판매 합니다</option>
@@ -408,7 +406,7 @@ $(document).ready(function() {
 	
 	  		<div style="position:relative;">
 				<a class='btn btn-primary' href='javascript:;'>
-					첨부하실 파일을 선택하세요
+					첨부파일
 					<input type="file" multiple="multiple" name="file" id="file" accept="video/*,image/*",
 					 style=
 					 'position:absolute;
@@ -429,7 +427,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 			<div class="text-center form-group col-md-12">
-				<button class="btn btn-primary" id="btnWrite">작성</button>
+				<button class="btn" id="btnWrite">작성</button>
 				<input type="reset" id="cancel" class="btn btn-danger" value="취소" />
 			</div>
 	</form>
@@ -553,6 +551,119 @@ function cat1_change(key,sel){
 }
 
 </script>	
+<script>
+var cat3_num = new Array();
+var cat3_name = new Array();
+
+
+cat3_num[1] = new Array(1,2,3,4,5,6,7,8,9,10,11,12);
+cat3_name[1] = new Array(	
+		"신사동",
+		"논현동",
+		"압구정동",
+		"청담동",	
+		"삼성동",
+		"대치동",
+		"역삼동",
+		"도곡동",
+		"개포동",
+		"세곡동	",
+		"일원동",
+		"수서동");
+cat3_num[2] = new Array(1,2,3,4,5,6,7,8);
+cat3_name[2] = new Array(	
+		"상일동	",
+		"명일동",
+		"고덕동",
+		"암사동",
+		"천호동",
+		"성내동",
+		"길동",
+		"둔촌동"
+		);
+cat3_num[3] = new Array(1,2,3,4,5,6,7,8,9,10);
+cat3_name[3] = new Array(
+		"삼양동",
+		"송중동",
+		"송천동",
+		"삼각산동"  ,
+		"번동",
+		"수유동"  ,
+		"우이동",
+		"미아동",
+		"인수동",
+		"강북구"
+		);
+cat3_num[4] = new Array(1,2,3,4,5,6,7,8,9,10);
+cat3_name[4] = new Array(
+		"염창동",
+		"등촌동",
+		"화곡동",
+		"가양동",
+		"발산동",
+		"공항동	",
+		"방화동",
+		"방화동",
+		"방화동",
+		"우장산동"
+		);
+		
+
+
+function cat2_change(key,sel){
+ if(key == '') return;
+ 
+ 
+ const map = new Map();
+ map.set(1,'강남구');
+ map.set(2,'강동구');
+ map.set(3,'강북구');
+ map.set(4,'강서구');
+ map.set(5,'관악구');
+ map.set(6,'광진구');
+ map.set(7,'구로구');
+ map.set(8,'금천구');
+ map.set(9,'노원구');
+ map.set(10,'도봉구');
+ map.set(11,'동대문구');
+ map.set(12,'동작구');
+ map.set(13,'마포구');
+ map.set(14,'서초구');
+ map.set(15,'성동구');
+ map.set(16,'성북구');
+ map.set(17,'송파구');
+ map.set(18,'양천구');
+ map.set(19,'영등포구');
+ map.set(20,'용산구');
+ map.set(21,'은평구');
+ map.set(22,'종로구');
+ map.set(23,'중구');
+ map.set(24,'중랑구');
+ 
+ //키값에 숫자매핑작업..ex)'노원구','노원구' -> 9,'노원구'
+ for([keyy, value] of map){
+	
+	 if(key==value)
+	 {
+		 key=keyy;
+	 }
+ }
+//-----------------
+
+
+ var name = cat3_name[key];
+ var val = cat3_num[key];
+
+ for(i=sel.length-1; i>=0; i--)
+  sel.options[i] = null;
+ sel.options[0] = new Option('-선택-','', '', 'true');
+ for(i=0; i<name.length; i++){
+//   sel.options[i+1] = new Option(name[i],val[i]);
+  sel.options[i+1] = new Option(name[i],name[i]);
+ }
+}
+
+</script>	
 
 
 <!-- 비디오 퍼즈 동작 스크립트 -->
@@ -578,7 +689,7 @@ function cat1_change(key,sel){
 			.ready(
 					function() {
 						
-						//---------가격 정규표현식 설정 ------------
+						/* //---------가격 정규표현식 설정 ------------
 						$('#price').change(function(){
 							
 							v = $(this).val();
@@ -593,7 +704,7 @@ function cat1_change(key,sel){
 
 							}
 						});
-						
+						 */
 						//---------콤마-------------------------					
 						function numberWithCommas(x) {
 						    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -657,10 +768,10 @@ function cat1_change(key,sel){
 									
 									console.log("fileType[fileIndex] : "+fileType[fileIndex])
 									if(fileType[fileIndex]=="video"){
-// 									alert("fileType :::"+fileType)
+
 									}
 									else if(fileType[fileIndex]=="image"){
-// 									alert("fileType :::"+fileType)
+
 									}else{
 										alert("image나 비디오 파일이 아닙니다")
 										$('div.rm').remove();
@@ -684,11 +795,7 @@ function cat1_change(key,sel){
 									
 									
 									
-// 									console.log("fileURL" + fileURL)
-									
-									
 									var reader = new FileReader();
-// 									<iframe id="player_1" src="/resources/img/hyeji.mp4" width="600" height="400" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 
 									reader.onload = function(img) {
 										
@@ -808,4 +915,4 @@ $(function() {
 	
 	</div>
 
-	<c:import url="/WEB-INF/views/footer/footer.jsp" />
+	<c:import url="/WEB-INF/views/layout/footer.jsp" />

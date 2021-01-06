@@ -36,6 +36,8 @@ public class FileServiceImpl implements FileService{
 		String storedPath = context.getRealPath("upload");
 		logger.info("realPath:" + storedPath);
 		
+		System.out.println("파일경로 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + storedPath);
+		
 		//폴더가 존재하지 않으면 생성하기
 		File stored = new File(storedPath);
 		if(!stored.exists()) {
@@ -49,15 +51,18 @@ public class FileServiceImpl implements FileService{
 		String filename=fileupload.getOriginalFilename();
 		String Fname=fileupload.getOriginalFilename();
 		//UUID값 생성
-		String uid=UUID.randomUUID().toString().split("-")[4];
-		logger.info(uid);
-		//파일이름에 UUID 추가하기
-		filename+=uid;
+		
+		String uid=UUID.randomUUID().toString().split("-")[4]; logger.info(uid);
+		//파일이름에 UUID 추가하기 filename+=uid;
 		
 		
+		
+		int pos = Fname.lastIndexOf( "." );
+		String ext = Fname.substring( pos + 1 );
+
 		//저장될 파일 정보 객체
-		File dest=new File(stored,filename);
-		
+		File dest=new File(stored+"\\"+uid+"."+ext);
+		System.out.println("dest>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+dest);
 		try {
 			//업로드된 파일 저장하기
 			fileupload.transferTo(dest);
@@ -68,14 +73,12 @@ public class FileServiceImpl implements FileService{
 			e.printStackTrace();
 		}
 		//확장자 구하기
-		int pos =Fname.lastIndexOf( "." );
-		String ext = Fname.substring( pos + 1 );
 		
 		//DB에 기록하기
 		Filetest filetest = new Filetest();
 		
 		filetest.setOriginName(fileupload.getOriginalFilename());
-		filetest.setStoredName(filename);
+		filetest.setStoredName(uid+"."+ext);
 		filetest.setFilePath(storedPath);
 		filetest.setFileKind(ext);
 		fileDao.insertFile(filetest);
